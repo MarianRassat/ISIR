@@ -33,7 +33,7 @@ namespace RT_ISICG
 
 			if ( hitRecord._object->getMaterial()->isReflective() )
 			{
-				// Matériau miroir
+				// MatÃ©riau miroir
 				Ray reflectedRay = Ray( hitRecord._point, glm::reflect( p_ray.getDirection(), hitRecord._normal ) );
 				reflectedRay.offset( hitRecord._normal );
 
@@ -42,7 +42,7 @@ namespace RT_ISICG
 
 			if ( hitRecord._object->getMaterial()->isTransparent() )
 			{
-				// Matériau transparent
+				// MatÃ©riau transparent
 				Ray reflectedRay = Ray( hitRecord._point, glm::reflect( p_ray.getDirection(), hitRecord._normal ) );
 				reflectedRay.offset( hitRecord._normal );
 				Vec3f reflectedLi = _Li( p_scene, reflectedRay, p_tMin, p_tMax, p_inTransparent, p_nbBounces + 1 );
@@ -92,7 +92,7 @@ namespace RT_ISICG
 
 			Vec3f indirectLight = Vec3f( 0 );
 
-			for ( int i = 0; i < glm::max( 1, _nbBRDFSamples - p_nbBounces * p_nbBounces ); i++ )
+			for ( int i = 0; i < _nbBRDFSamples; i++ )
 			{
 				Ray new_ray = Ray( hitRecord._point, randomDirection( hitRecord._normal ) );
 				new_ray.offset( hitRecord._normal );
